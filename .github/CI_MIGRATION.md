@@ -82,6 +82,32 @@ reviewed helper API (run/shell/env is supported), not an invented composite.
 Private digest-bound accepted infra snapshot belongs on reviewed consumer policy
 branch; source/registration/tool receipt are distinct from accepted admission.
 
+### Coordinator transport clarification (2026-11-01)
+
+There is currently **no published/installed Couch provisional product helper or
+receipt for this repository**. The infra sole owner has a source assignment for a
+bounded **non-GitHub** coordinator path, but its actual installation, review and
+preview are pending. That is a specific missing execution interface, not a global
+security/audit/Fresh8 wait. Do not substitute old OVH `fresh_user_job`, the Shop
+11745 ordinary overlay, or the old b68 infra-only validation prototype; none is
+this repository's product admission.
+
+The planned path must supply actual exact UID/slice, private job state, pre/post
+tool hashes, resource bounds and scoped cleanup. Its existence would **not** grant
+GitHub runner-group access. Direct GitHub dispatch remains **off** for this
+inaccessible consumer. Public/private-library access and group4 absence remain
+actual remote-route denials: no sharing, enrollment, token expansion or settings
+workaround is authorized.
+
+The coordinator's fc core-tool declaration (Node22.12/pnpm9.12.3, Python3.12 and
+3.14.6, Terraform1.13.5, Typst0.15.0) is not an installed Flutter acceptance proof
+or evidence this workload ran there. Python3.10/3.11, Tectonic0.16.9 and SourceSans
+are not declared accepted capabilities; no substitution/global installation is
+inferred. Actual versions/placement must be verified before any new remote claim.
+The existing local Flutter3.41.0/Dart3.11.0 results below remain **local** evidence.
+Completed tests and their failures are preserved, not repeated for a server
+restart. No Docker/browser/Gradle fanout is authorized without a coordinator budget.
+
 ## Test and integration evidence matrix
 
 | Job / test path | Worker/profile/resources | PR / shared revision | Real run / result / cleanup |
@@ -90,7 +116,8 @@ branch; source/registration/tool receipt are distinct from accepted admission.
 | `stale/stale` | No observed worker | No open PR; no shared action | Not executed: write-authority bot is not a safe product test |
 | `just ci-source-test` | Local stdlib tests; no runner admission | Exact caller/source hashes recorded externally; no library execution | Source/fixture evidence only, not GitHub runtime qualification |
 | `just flutter-*` | Provisional local private replica + reflink SDK, CPU100% / RAM3GiB / 128tasks / 600s; actual SDK below | Tested source/caller/legacy-definition commit `ec6e4e5dc3dbf63f65b89b043add1dfe05fecde1`; no PR; shared ref observation is **not executed library provenance** | UTC: analyze PASS, 399 tests PASS, 399 coverage tests PASS; committed lock FAIL65; private scratch removed; no Codecov upload or GitHub run/admission claim |
-| Future real consumer validation | **Unavailable**: no authorized group/private-library/master binding | Reuse this branch and at most one necessary integration PR after common development; no serial pin PRs | Not run; no fake URL, receipt, review, runner/profile or cleanup result |
+| Future GitHub consumer validation | **Unavailable**: private-library access denied, repo absent from group4; master support is source-only qualified | Reuse this branch and at most one necessary integration PR after common development; no serial pin PRs | Direct dispatch off; not run; no fake URL, receipt, review, runner/profile or cleanup result |
+| Future coordinator non-GitHub provisional product path | **Unavailable**: helper/receipt not published or installed for this repo; infra-owner source assignment, installation/review/preview pending | Same sole writer/branch; no GitHub access implied | Not run; no substitution of historical OVH/Shop/infra-only interfaces; preserve completed local evidence |
 
 ### Actual first provisional local product execution
 
