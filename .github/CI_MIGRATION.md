@@ -115,6 +115,7 @@ restart. No Docker/browser/Gradle fanout is authorized without a coordinator bud
 | Legacy `Dart/build` | Historical hosted selector only; no observed worker | No open PR; no shared action in legacy graph | Runs API total_count=0; no run URL or accepted result to cite |
 | `stale/stale` | No observed worker | No open PR; no shared action | Not executed: write-authority bot is not a safe product test |
 | `just ci-source-test` | Local stdlib tests; no runner admission | Exact caller/source hashes recorded externally; no library execution | Source/fixture evidence only, not GitHub runtime qualification |
+| `just ci-policy-fixtures FROZEN_SOURCE` | Local Python3.14.6, actual CPU100% / RAM512MiB / 64tasks / 90s service ceiling | Consumer `754e60e1716afa130053d158e560bcb5e03c2e0c`; exact library `afb3823` / tree `b866797a27ff7bcaec7f4bf8038fc5e59c19b817` | 23 offline integration fixtures PASS, four source regressions separately PASS; full tree/ref unchanged before/after, private state cleanup PASS; no product rerun or real GitHub IDs |
 | `just flutter-*` | Provisional local private replica + reflink SDK, CPU100% / RAM3GiB / 128tasks / 600s; actual SDK below | Tested source/caller/legacy-definition commit `ec6e4e5dc3dbf63f65b89b043add1dfe05fecde1`; no PR; shared ref observation is **not executed library provenance** | UTC: analyze PASS, 399 tests PASS, 399 coverage tests PASS; committed lock FAIL65; private scratch removed; no Codecov upload or GitHub run/admission claim |
 | Future GitHub consumer validation | **Unavailable**: private-library access denied, repo absent from group4; master support is source-only qualified | Reuse this branch and at most one necessary integration PR after common development; no serial pin PRs | Direct dispatch off; not run; no fake URL, receipt, review, runner/profile or cleanup result |
 | Future coordinator non-GitHub provisional product path | **Unavailable**: helper/receipt not published or installed for this repo; infra-owner source assignment, installation/review/preview pending | Same sole writer/branch; no GitHub access implied | Not run; no substitution of historical OVH/Shop/infra-only interfaces; preserve completed local evidence |
@@ -186,6 +187,27 @@ works. Synthetic provenance run IDs exist only in temporary in-memory fixtures;
 actual run/job/runner URLs/IDs in the evidence receipt remain null. No GitHub
 transport/status/dispatch, product-suite rerun, heavy execution, access change,
 unbound-template activation or final-main switch is performed by these tests.
+
+Actual result at consumer source/caller/offline-definition commit
+`754e60e1716afa130053d158e560bcb5e03c2e0c`: **23 integration fixtures PASS**;
+the four existing source regressions also PASS. This is not a sum of independent
+product checks and does not rerun the library's 94/37 source suites. Exact resolved
+library SHA/tree before and after match the frozen values above; the actual loaded
+full Git tree matches before and after, with no dirty frozen files or ref drift.
+
+Execution used installed local Python **3.14.6**, credential-stripped private
+HOME/temp/UV/XDG state and effective cgroup `cpu.max=100000 100000`,
+`memory.max=536870912`, `pids.max=64`, outer90s. Actual service runtime1.414s,
+CPU620ms, memory peak44.9MiB, swap0. Private state removed; service inactive.
+Original product/execution receipts were hashed before/after and remain
+byte-identical, including their failures. No real run/job/runner URL or ID exists.
+
+External evidence:
+`min93-awesome_notifications-afb-fixtures-20261101T055656Z/receipt.json`
+and its two command logs. Earlier `73fbd967` constructor/main-only rejection is
+**historical only**, not a current source blocker. Public/private-action access,
+missing group4 repository access, missing installed non-GitHub product helper and
+the separately trusted Codecov transfer path remain actual integration limits.
 
 ### UTC repeat (separate result, not retroactive correction)
 
