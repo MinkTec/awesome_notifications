@@ -62,11 +62,13 @@ asserted immutable historic executions (there are no returned consumer runs):
    repository**. The provisional grant does not override actual access denial;
    do not copy pilot labels, expand membership or claim a fresh runner was used.
    There is no currently accepted worker/profile/resource/lifecycle binding here.
-3. Shared source v1 at `73fbd9675efe1555a5e847042228a140460eeba1` requires default
-   branch **main** for its receiver/canonical graph, but this repository uses
-   **master**. A reviewed supported default-master contract is required, not a
-   branch rename or a duplicate dispatcher implementation. Existing ordinary
-   `pull_request` CI is **not main-controlled exact-head CI**.
+3. Initial shared source `73fbd9675efe1555a5e847042228a140460eeba1` required default
+   branch **main**, incompatible with this repository's **master**. The shared
+   owner subsequently published `afb382373b467b45216c7c08f5fe899c3c053471` with
+   explicit `definition_ref: master`, bound to the actual API-verified default.
+   Its exact docs/action/source were read: this source compatibility edge is
+   resolved, **not yet qualified in consumer CI**. No branch rename or duplicate
+   dispatcher. Existing `pull_request` CI is **not main-controlled exact-head CI**.
 4. The shared strict test graph prohibits step secrets. Existing Codecov token
    upload therefore needs an actually supported separate trusted transfer path
    or reviewed compatible extension; it must not be placed in read-only PR tests
@@ -87,7 +89,7 @@ branch; source/registration/tool receipt are distinct from accepted admission.
 | Legacy `Dart/build` | Historical hosted selector only; no observed worker | No open PR; no shared action in legacy graph | Runs API total_count=0; no run URL or accepted result to cite |
 | `stale/stale` | No observed worker | No open PR; no shared action | Not executed: write-authority bot is not a safe product test |
 | `just ci-source-test` | Local stdlib tests; no runner admission | Exact caller/source hashes recorded externally; no library execution | Source/fixture evidence only, not GitHub runtime qualification |
-| `just flutter-*` | Provisional local private replica + reflink SDK, one test at a time; limits and actual tool revision in external receipt | No PR required for local execution; measured shared ref before/after is **not executed library provenance** | External result receipt distinguishes committed-lock, diagnostic resolver, analysis, unit tests and coverage; no Codecov upload, no GitHub run/admission claim |
+| `just flutter-*` | Provisional local private replica + reflink SDK, CPU100% / RAM3GiB / 128tasks / 600s; actual SDK below | Tested source/caller/legacy-definition commit `ec6e4e5dc3dbf63f65b89b043add1dfe05fecde1`; no PR; shared ref observation is **not executed library provenance** | UTC: analyze PASS, 399 tests PASS, 399 coverage tests PASS; committed lock FAIL65; private scratch removed; no Codecov upload or GitHub run/admission claim |
 | Future real consumer validation | **Unavailable**: no authorized group/private-library/master binding | Reuse this branch and at most one necessary integration PR after common development; no serial pin PRs | Not run; no fake URL, receipt, review, runner/profile or cleanup result |
 
 ### Actual first provisional local product execution
@@ -125,8 +127,42 @@ Library dev ref observed before/after is exactly
 `73fbd9675efe1555a5e847042228a140460eeba1`, no drift; no shared action was executed.
 An offline constructor probe of the exact downloaded shared source also rejects
 `feat/min-93-main-policy` with `invalid full commit SHA`, before any API call.
-The library owner's uncommitted working tree differs: it is not evidence that a
-later revision has already been tested. No consumer runtime/PR status is claimed.
+The owner's then-uncommitted working tree differed and was not attributed to that
+probe. Later `afb382373b467b45216c7c08f5fe899c3c053471` adds the explicit mutable-ref
+override and master compatibility; it was **not executed in that earlier run**.
+Its observed source-CI run was queued at inspection:
+https://github.com/MinkTec/ci-actions/actions/runs/41278320809 .
+No consumer runtime/PR status or exact-head source-CI success is claimed.
+
+### UTC repeat (separate result, not retroactive correction)
+
+Source/caller/legacy-definition commit
+`ec6e4e5dc3dbf63f65b89b043add1dfe05fecde1`, same product and workflow blob as above.
+The only test-environment correction is explicit `TZ=UTC`; same installed SDK,
+private cold dependency state, verified cgroup limits and command bounds.
+Actual service runtime 75.8s, memory peak 1.3GiB, swap zero.
+
+* Analysis PASS with original `--no-fatal-infos`.
+* **399 tests PASS**, then **399 tests with coverage PASS**, no exclusions.
+* Committed-lock qualifier still **FAIL65** (same 17 dependency changes); the
+  overall diagnostic service deliberately exits **1**, not green. Legacy resolver
+  PASS and changed only the replica's lock. No repository lock/product edits.
+* Coverage SHA256 `7f58207b44d67c3bac6d447d56b539c161a6331fb61f426ca67a507b1e52fa88`;
+  no upload. Scoped scratch cleanup succeeded, four measured SDK identity hashes
+  unchanged. Both transient services are inactive; post-run `/proc` inspection
+  found no command references to either invocation's private scratch/evidence path.
+
+Receipt/logs: `min93-awesome_notifications-local-20261101T054755Z` in external cache.
+Observed library ref **drifted during this run**:
+`73fbd9675efe1555a5e847042228a140460eeba1` →
+`afb382373b467b45216c7c08f5fe899c3c053471`. Neither library revision was executed
+by the local Flutter commands. **No shared-library equivalence or consumer
+integration acceptance** can be inferred from this run.
+
+An additional **offline fixture-only** probe of exact downloaded `afb3823` source
+confirms constructor acceptance of the scoped development ref and API-fixture
+resolution of canonical master. It does not test private access, loaded-tree
+binding, a reviewed policy, dispatch/bridge or actual runner admission.
 
 Recurring product/source commands are in `Justfile`; execute in a private owned
 replica for provisional local tests, never mutate the shared SDK. Keep lock changes
