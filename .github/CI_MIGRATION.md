@@ -1,0 +1,98 @@
+# MIN-93: awesome_notifications
+
+## Evidence and authority
+
+This is an **incomplete consumer migration increment**, not ordinary runner
+admission or a production switch. Sole writer: `ses_e6a5fbf02ffe80NRWOBXohQvEE`,
+branch `ci/min-93-fresh-awesome_notifications`, product/master base
+`9db1b355e74f073025238c2484461c193bce859d`. Existing workflows remain intact until
+the concrete integration edges below are resolved; no failing placeholder gate
+or invented runner binding has been added.
+
+Canonical policy self-read: `MinkTec/agent-skills`
+`d25f5e5d570341bb72d748882c209a2266d43327`, minktec-ci **1.3.1**, skill blob
+`0d182c1c07cdd440bb5d47d2e543aa6bd12b7ab3`, SHA256
+`9d84ddf2a704fbb9ed70a51b4c3e9643dff8055bb0a658483caaf9fd91750d79`.
+All six same-commit main-branch/shared-actions/fresh-routing/compatibility/
+checklist/S3 references were read. The task-specific coordinated-development
+override permits literal `MinkTec/ci-actions/...@feat/min-93-main-policy` only on
+the isolated migration branch; eventual once-only `@main` integration is separate
+from review, merge and production authority. No expression in `uses` is allowed.
+
+## Complete current graph
+
+Live API on 2026-11-01: public, non-archived, non-disabled fork; Actions enabled;
+two active workflows, zero returned workflow runs, no open PRs. Default branch
+is **master**, not main. Remote master equals the product base above; `dev` is
+absent. No repository or nested AGENTS.md, reusable workflows, local composites,
+matrix dimensions, services, release/signing/publish workflows, or Actions/S3
+artifact writers/readers exist. Plugin support for Apple/Windows/Android in
+`pubspec.yaml` is not evidence of corresponding CI lanes.
+
+| Workflow / job | Complete direct and transitive steps | Capability / old route | Migration classification / proposed path |
+| --- | --- | --- | --- |
+| `dart.yml` / `build` | checkout v3 (Node16 main+post); flutter-action v2 composite (setup.sh metadata + SDK download/setup; conditional actions/cache v5 Flutter/pub writers+readers, both **off** for current inputs); configuration output; `flutter clean`; `flutter pub get`; `flutter analyze --no-fatal-infos`; `flutter test`; `flutter test --coverage`; codecov v3 (Node16, external uploader) | Linux x64 Flutter/Dart unit tests, package network, coverage; `ubuntu-latest`; no explicit timeout (GitHub default 360min) | Ordinary Linux: fresh-worker-v1 with verified installed Flutter/private SDK and caches, bounded resources, pre/postflight + cleanup. Preserve `build`, every command/test and Codecov semantics. `Justfile` captures actual product commands, bounds test concurrency to one, and adds a **separate** committed-lock qualifier. No platform exception. |
+| `stale.yml` / `stale` | actions/stale v5 Node16 `dist/index.js`, no nested action/checkout; daily `40 8 * * *`; issues+PR write token; existing stale text/label unchanged | Metadata-only maintenance, `ubuntu-latest`; no explicit timeout (360min default) | Separate write-authority metadata path; never combine with PR checkout/tests. No claim that this is a hosted-only security/lint specialist exemption or that its current route is accepted. Exact authorized metadata placement still needed. Do not run the bot as a test (would mutate issues/PRs). |
+
+Formatting remains commented out exactly as before (not a newly skipped check).
+Codecov remains `directory: coverage`, token step-only, `fail_ci_if_error: false`:
+the existing optional upload must not become an excuse to skip coverage tests.
+No new S3 bucket, credentials or transfer is warranted for this graph. Codecov is
+an external coverage service, **not** a GitHub/S3 build-artifact reader. Flutter
+SDK caches are dependencies, not cross-job build outputs.
+
+Transitive action definitions were read at these actual tag resolutions, not
+asserted immutable historic executions (there are no returned consumer runs):
+
+| Existing reference | Resolved source on inspection |
+| --- | --- |
+| `actions/checkout@v3` | `a37ce9120846195fa4ece8f58b268e6043cb2f26` |
+| `subosito/flutter-action@v2` | `1a449444c387b1966244ae4d4f8c696479add0b2` |
+| `codecov/codecov-action@v3` | `ab904c41d6ece82784817410c45d8b8c02684457` |
+| `actions/stale@v5` | `f7176fd3007623b69d27091f9b9d4ab7995f0a06` |
+
+## Exact integration edges (not global safety waiting)
+
+1. The consumer is **public**, but `MinkTec/ci-actions` is **private** and its
+   Actions access API reports `access_level: none`. Direct private-action `uses`
+   cannot be assumed to work for this consumer. No PAT, source vendoring,
+   cross-private Contents API from consumer GITHUB_TOKEN, visibility change or
+   action-sharing change has been introduced. Coordinator/shared owner notified.
+2. Restricted group 4's actual ten-repository allowlist **does not include this
+   repository**. The provisional grant does not override actual access denial;
+   do not copy pilot labels, expand membership or claim a fresh runner was used.
+   There is no currently accepted worker/profile/resource/lifecycle binding here.
+3. Shared source v1 at `73fbd9675efe1555a5e847042228a140460eeba1` requires default
+   branch **main** for its receiver/canonical graph, but this repository uses
+   **master**. A reviewed supported default-master contract is required, not a
+   branch rename or a duplicate dispatcher implementation. Existing ordinary
+   `pull_request` CI is **not main-controlled exact-head CI**.
+4. The shared strict test graph prohibits step secrets. Existing Codecov token
+   upload therefore needs an actually supported separate trusted transfer path
+   or reviewed compatible extension; it must not be placed in read-only PR tests
+   or silently removed. No new artifact identity/keys or fabricated review.
+
+Published infra docs were read at
+`fc6820c5a74acae67a545867f9b814cc44211f7a`: `fresh-runners`,
+`fresh-runner-registration`, `shared-ci-toolchains`; candidate registration is
+not ordinary admission. Lifecycle invocation must be the **actual installed**
+reviewed helper API (run/shell/env is supported), not an invented composite.
+Private digest-bound accepted infra snapshot belongs on reviewed consumer policy
+branch; source/registration/tool receipt are distinct from accepted admission.
+
+## Test and integration evidence matrix
+
+| Job / test path | Worker/profile/resources | PR / shared revision | Real run / result / cleanup |
+| --- | --- | --- | --- |
+| Legacy `Dart/build` | Historical hosted selector only; no observed worker | No open PR; no shared action in legacy graph | Runs API total_count=0; no run URL or accepted result to cite |
+| `stale/stale` | No observed worker | No open PR; no shared action | Not executed: write-authority bot is not a safe product test |
+| `just ci-source-test` | Local stdlib tests; no runner admission | Exact caller/source hashes recorded externally; no library execution | Source/fixture evidence only, not GitHub runtime qualification |
+| `just flutter-*` | Provisional local private replica + reflink SDK, one test at a time; limits and actual tool revision in external receipt | No PR required for local execution; measured shared ref before/after is **not executed library provenance** | External result receipt distinguishes committed-lock, diagnostic resolver, analysis, unit tests and coverage; no Codecov upload, no GitHub run/admission claim |
+| Future real consumer validation | **Unavailable**: no authorized group/private-library/master binding | Reuse this branch and at most one necessary integration PR after common development; no serial pin PRs | Not run; no fake URL, receipt, review, runner/profile or cleanup result |
+
+Recurring product/source commands are in `Justfile`; execute in a private owned
+replica for provisional local tests, never mutate the shared SDK. Keep lock changes
+in that replica and report them rather than editing product locks to obtain green.
+Local real tests and mocked preservation tests remain separate from main-defined
+normal/stale/dev PR qualification and from final admission/production evidence.
+No merge, deployment, release, signing or live bot operation is authorized.
