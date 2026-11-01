@@ -161,6 +161,32 @@ Its observed source-CI run was queued at inspection:
 https://github.com/MinkTec/ci-actions/actions/runs/41278320809 .
 No consumer runtime/PR status or exact-head source-CI success is claimed.
 
+### Reproducible afb3823 consumer integration fixtures
+
+`just ci-policy-fixtures /path/to/frozen/ci-actions-worktree` loads, rather than
+vendors, exact shared source `afb382373b467b45216c7c08f5fe899c3c053471` / full Git
+tree `b866797a27ff7bcaec7f4bf8038fc5e59c19b817`. A different commit, dirty frozen
+worktree or changed loaded tree is rejected. This command is **offline source
+integration**, not a runnable GitHub workflow or a new dispatcher implementation.
+
+Fixtures bind the actual consumer head and retained master identity, preserve all
+five Flutter commands and original Codecov options, exercise the token-free
+provenance entrypoint, and reject changed library bytes/bindings, hosted Linux,
+pilot routing, secret-bearing Codecov in test jobs, missing artifact/cleanup,
+credential-persisting checkout, altered check names, legacy push/PR graphs,
+expression refs, a dev canonical default, missing reviewed master policy and
+tokenless authoritative validation.
+
+The positive **structural-only** build graph reuses the frozen library's existing
+adversarial fixture route/lifecycle sentinels, not invented installed Infra APIs.
+No reviewer, execution review or accepted consumer receipt is created. Those
+sentinels are neither executed nor written to `.github/workflows`; the required
+artifact role is retained, so this does not claim the unresolved Codecov path
+works. Synthetic provenance run IDs exist only in temporary in-memory fixtures;
+actual run/job/runner URLs/IDs in the evidence receipt remain null. No GitHub
+transport/status/dispatch, product-suite rerun, heavy execution, access change,
+unbound-template activation or final-main switch is performed by these tests.
+
 ### UTC repeat (separate result, not retroactive correction)
 
 Source/caller/legacy-definition commit

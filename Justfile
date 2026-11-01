@@ -27,3 +27,7 @@ flutter-check: flutter-clean flutter-dependencies flutter-analyze flutter-test f
 
 ci-source-test:
     uv run --no-project python -B -m unittest discover -s scripts/ci/tests -v
+
+# Explicit frozen external dependency; never installs/copies a private dispatcher.
+ci-policy-fixtures shared_source:
+    uv run --no-project --no-managed-python python -B scripts/ci/integration/test_shared_policy.py "{{shared_source}}"
