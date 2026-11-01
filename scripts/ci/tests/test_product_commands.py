@@ -1,6 +1,7 @@
 """Consumer graph preservation checks, not main-policy/runtime acceptance."""
 
 from pathlib import Path
+import os
 import subprocess
 import unittest
 
@@ -43,6 +44,7 @@ class ProductCommandsTest(unittest.TestCase):
             with self.subTest(recipe=recipe):
                 result = subprocess.run(
                     ["just", "--dry-run", recipe], cwd=ROOT,
+                    env={**os.environ, "FLUTTER": "flutter"},
                     capture_output=True, text=True, check=True,
                 )
                 lines = (result.stdout + result.stderr).strip().splitlines()
@@ -55,6 +57,9 @@ class ProductCommandsTest(unittest.TestCase):
             "sdkmanager", "actions/stale", "curl ", "docker ",
         ):
             self.assertNotIn(forbidden, recipes)
+
+    def test_timezone_matches_existing_hosted_test_expectations(self):
+        self.assertIn('export TZ := "UTC"', (ROOT / "Justfile").read_text())
 
 
 if __name__ == "__main__":

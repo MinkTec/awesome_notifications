@@ -90,6 +90,44 @@ branch; source/registration/tool receipt are distinct from accepted admission.
 | `just flutter-*` | Provisional local private replica + reflink SDK, one test at a time; limits and actual tool revision in external receipt | No PR required for local execution; measured shared ref before/after is **not executed library provenance** | External result receipt distinguishes committed-lock, diagnostic resolver, analysis, unit tests and coverage; no Codecov upload, no GitHub run/admission claim |
 | Future real consumer validation | **Unavailable**: no authorized group/private-library/master binding | Reuse this branch and at most one necessary integration PR after common development; no serial pin PRs | Not run; no fake URL, receipt, review, runner/profile or cleanup result |
 
+### Actual first provisional local product execution
+
+Source/caller `957ec2bd7f4467665e62e5acc3f5529defdbd2dc`; legacy workflow blob
+`396ddb9952da68a2cdb270fad48705b2a2428a34` (not a main-controlled definition).
+Installed local Flutter **3.41.0**, Dart **3.11.0**, SDK source revision
+`44a626f4f0027bc38a46dc68aed5964b05a83c18`; this is an existing workstation
+installation, **not** a fresh profile receipt. No SDK/toolchain installation.
+
+The user transient service read back effective cgroup `cpu.max=100000 100000`,
+`memory.max=3221225472`, `pids.max=128`; 600s outer wall bound. Actual runtime
+77.8s, memory peak 1.5GiB, swap zero. Source and SDK were private replicas;
+SDK used `--reflink=always`, distinct inodes, no hardlink/full-copy fallback.
+Product subprocesses received only explicit private HOME/pub/tmp/XDG/tool paths,
+no inherited GitHub/Codecov/provider credentials. No Docker lease was needed.
+
+* `flutter clean`: PASS.
+* Committed lock qualification: **FAIL 65**, Flutter 3.41.0 requires changes to 17
+  dependencies. Repository lock remains unchanged.
+* Legacy `flutter pub get`: PASS, lock changes in the disposable replica only.
+* Original `flutter analyze --no-fatal-infos`: PASS, 121 information-level issues.
+* Tests and coverage: each **398 passed, 1 failed**, not green. The failure is
+  `notification_schedule_test.dart` / `toString prints the respective inherited
+  notification model`: host timezone CET differs from expected UTC. No test is
+  skipped or rewritten. `Justfile` now explicitly exports UTC to preserve the
+  existing hosted Linux environment rather than depend on the future worker's
+  timezone; repeat validation is recorded separately.
+* Coverage file was generated (digest recorded), not uploaded. Private scratch
+  removed; four measured shared SDK identity files unchanged before/after. This
+  is **not** a full immutable catalogue verification.
+
+External cache receipt/logs: `min93-awesome_notifications-local-20261101T054535Z`.
+Library dev ref observed before/after is exactly
+`73fbd9675efe1555a5e847042228a140460eeba1`, no drift; no shared action was executed.
+An offline constructor probe of the exact downloaded shared source also rejects
+`feat/min-93-main-policy` with `invalid full commit SHA`, before any API call.
+The library owner's uncommitted working tree differs: it is not evidence that a
+later revision has already been tested. No consumer runtime/PR status is claimed.
+
 Recurring product/source commands are in `Justfile`; execute in a private owned
 replica for provisional local tests, never mutate the shared SDK. Keep lock changes
 in that replica and report them rather than editing product locks to obtain green.
